@@ -1,0 +1,35 @@
+#borderForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: solid 2px black;
+    border-radius: 8px;
+    margin: 14px;
+    padding: 20px;
+    width: fit-content;
+}
+
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    align-items: center;
+    gap: 30px;
+    width: 300px;
+}
+
+.form-row label {
+    text-align: right;
+}
+
+.submitBtn{
+    align-self: center;
+    width: fit-content;
+    padding: 8px 24px;
+}

@@ -1,0 +1,32 @@
+#navbar {
+    background-color: antiquewhite;
+    display: flex;
+    margin: 10px;
+    border-radius: 8px;
+    padding: 12px;
+    position: relative;
+}
+
+#navbar a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+#navbar a.active {
+    color: #d3b300;
+    font-weight: bold;
+}
+
+.push-right {
+    margin-left: auto;
+}
+
+#searchInput {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid #444;
+    width: 250px;
+}
