@@ -5,15 +5,17 @@ import Navbar from "./components/navBar";
 //Pages
 import Home from "./pages/home"
 import Login from "./pages/login"
+import SignUp from "./pages/signup"
 
 const myLinks = [
   { path: "/", label: "Home" },
-  { path: "/login", label: "Login" }
+  { path: "/login", label: "Login" },
+  { path: "/signup", label: "SignUp" }
 ]
 
 function AppContent() {
   const location = useLocation();
-  const hideNavbar = location.pathname === "/login";
+  const hideNavbar = location.pathname === "/login" || location.pathname === "/signup";
 
   return (
     <>
@@ -21,6 +23,7 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </>
   );

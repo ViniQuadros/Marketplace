@@ -33,3 +33,9 @@
     width: fit-content;
     padding: 8px 24px;
 }
+
+.error {
+    color: #e74c3c;
+    font-size: 14px;
+    margin: 0;
+}
