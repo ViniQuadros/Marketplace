@@ -3,7 +3,7 @@ import { auth, db } from './firebaseAdmin.js'
 
 const router = Router();
 
-router.post('/register', async(req, res) => {
+router.post('/register', async (req, res) => {
     const { email, password, name } = req.body;
 
     if (!email || !password) {
@@ -12,30 +12,30 @@ router.post('/register', async(req, res) => {
 
     try {
         const userRecord = await auth.createUser({
-            email, 
+            email,
             password,
-            displayName: name,
-        })
+            displayName: name || '',
+        });
 
         await db.collection('users').doc(userRecord.uid).set({
-            name,
-            email,
+            name: name || '',
+            email: email,
             createdAt: new Date(),
-        })
+        });
 
-        res.status(201).json({
+        return res.status(201).json({
             message: 'User created',
             uid: userRecord.uid,
-        })
+        });
     } catch (error) {
-        console.error(error);
+        console.error('Backend registration error:', error);
 
         if (error.code === 'auth/email-already-exists') {
             return res.status(409).json({ error: 'Email already exists' });
         }
 
-        res.status(500).json({ error: 'Error creating user' });
+        return res.status(500).json({ error: 'Error creating user' });
     }
-})
+});
 
 export default router;

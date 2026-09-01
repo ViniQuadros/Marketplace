@@ -1,17 +1,12 @@
-//Navbar routing
+// Navbar routing
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/navBar";
+import { AuthProvider } from "./context/authContext";
 
-//Pages
-import Home from "./pages/home"
-import Login from "./pages/login"
-import SignUp from "./pages/signup"
-
-const myLinks = [
-  { path: "/", label: "Home" },
-  { path: "/login", label: "Login" },
-  { path: "/signup", label: "SignUp" }
-]
+// Pages
+import Home from "./pages/home";
+import Login from "./pages/login";
+import SignUp from "./pages/signup";
 
 function AppContent() {
   const location = useLocation();
@@ -19,7 +14,7 @@ function AppContent() {
 
   return (
     <>
-      {!hideNavbar && <Navbar links={myLinks} />}
+      {!hideNavbar && <Navbar />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
@@ -32,7 +27,9 @@ function AppContent() {
 export default function App() {
   return (
     <BrowserRouter>
-      <AppContent />
+      <AuthProvider>
+        <AppContent />
+      </AuthProvider>
     </BrowserRouter>
   );
 }
