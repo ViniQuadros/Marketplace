@@ -69,9 +69,6 @@ export default function Home() {
 
       <section style={{ marginTop: "40px" }}>
         <h2>For you</h2>
-
-        {/* O componente encapsula toda a complexidade visual */}
-
         <ProductCarousel products={products} loading={loading} error={error} />
       </section>
     </div>

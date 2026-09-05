@@ -1,0 +1,146 @@
+.pd-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #212529;
+}
+
+.pd-back-wrap {
+  margin-bottom: 12px;
+}
+.pd-back {
+  color: #0d6efd;
+  text-decoration: none;
+  font-weight: 500;
+}
+.pd-back:hover {
+  text-decoration: underline;
+}
+
+.pd-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.pd-row {
+  display: flex;
+  flex-direction: column;
+}
+
+.pd-image-col {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fafafa;
+}
+.pd-image {
+  width: 100%;
+  max-height: 420px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.pd-info-col {
+  padding: 20px;
+}
+
+.pd-title {
+  font-size: 1.25rem;
+  margin: 0 0 8px 0;
+  line-height: 1.2;
+}
+.pd-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.pd-price {
+  color: #d32f2f;
+  font-weight: 700;
+  font-size: 1.125rem;
+}
+.pd-oldPrice {
+  color: #6c757d;
+  font-size: 0.95rem;
+}
+
+.pd-desc {
+  color: #6c757d;
+  margin-top: 4px;
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.pd-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.pd-btn {
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.pd-btn-primary {
+  background: #0d6efd;
+  color: #fff;
+  border-color: #0d6efd;
+}
+.pd-btn-primary:hover {
+  background: #0b5ed7;
+}
+
+.pd-btn-outline {
+  background: transparent;
+  color: #495057;
+  border: 1px solid #ced4da;
+}
+.pd-btn-outline:hover {
+  background: rgba(0,0,0,0.03);
+}
+
+.pd-alert {
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+.pd-alert-danger {
+  background: #f8d7da;
+  color: #842029;
+}
+
+@media (min-width: 768px) {
+  .pd-row {
+    flex-direction: row;
+  }
+  .pd-image-col {
+    flex: 0 0 45%;
+    padding: 24px;
+  }
+  .pd-info-col {
+    flex: 1 1 55%;
+    padding: 28px;
+  }
+}
+
+@media (max-width: 420px) {
+  .pd-image {
+    max-height: 260px;
+  }
+}
