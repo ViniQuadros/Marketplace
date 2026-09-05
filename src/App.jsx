@@ -8,6 +8,7 @@ import Home from "./pages/home";
 import Login from "./pages/login";
 import SignUp from "./pages/signup";
 import Product from "./pages/product";
+import Purchase from "./pages/purchase";
 
 function AppContent() {
   const location = useLocation();
@@ -21,6 +22,7 @@ function AppContent() {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/product/:id" element={<Product />} />
+        <Route path="/product/purchase/:id" element={<Purchase />} />
       </Routes>
     </>
   );

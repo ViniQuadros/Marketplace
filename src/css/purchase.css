@@ -1,0 +1,126 @@
+
+.purchase-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 24px;
+  align-items: start;
+  margin-top: 8px;
+}
+
+.purchase-summary {
+  background: #fff;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  text-align: center;
+}
+.purchase-image {
+  width: 100%;
+  max-height: 280px;
+  object-fit: contain;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+.purchase-title {
+  font-size: 1rem;
+  margin: 0 0 8px;
+}
+.purchase-price {
+  color: #d32f2f;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.purchase-desc {
+  color: #6c757d;
+  font-size: 0.9rem;
+  text-align: justify;
+}
+
+.purchase-form {
+  background: #fff;
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+.purchase-form h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+  color: #212529;
+}
+.form-input {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #e6e6e6;
+  border-radius: 8px;
+  margin-top: 6px;
+  box-sizing: border-box;
+  font-size: 0.95rem;
+  resize: none;
+}
+.form-input:disabled {
+  background: #f8f8f8;
+}
+
+.form-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.pd-btn {
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.pd-btn-primary {
+  background: #0d6efd;
+  color: #fff;
+  border-color: #0d6efd;
+}
+.pd-btn-outline {
+  background: transparent;
+  color: #495057;
+  border: 1px solid #ced4da;
+}
+
+.purchase-success-card {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  text-align: center;
+}
+
+.purchase-note {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+@media (max-width: 880px) {
+  .purchase-grid {
+    grid-template-columns: 1fr;
+  }
+  .purchase-summary {
+    order: 2;
+  }
+  .purchase-form {
+    order: 1;
+  }
+}

@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
-import { useParams, useLocation, Link } from "react-router-dom";
+import { useNavigate, useParams, useLocation, Link } from "react-router-dom";
 import "../css/productDetail.css";
 
 export default function Product() {
+
+  const navigate = useNavigate();
+
   const { id } = useParams();
   const location = useLocation();
   const [product, setProduct] = useState(location.state?.product || null);
@@ -10,9 +13,9 @@ export default function Product() {
   const [error, setError] = useState(null);
 
   const formatCurrency = (value) =>
-    new Intl.NumberFormat("pt-BR", {
+    new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "BRL",
+      currency: "USD",
     }).format(value);
 
   useEffect(() => {
@@ -24,11 +27,11 @@ export default function Product() {
         setLoading(true);
         setError(null);
         const res = await fetch(`/api/products/${id}`); 
-        if (!res.ok) throw new Error("Produto não encontrado");
+        if (!res.ok) throw new Error("Product not found");
         const data = await res.json();
         if (!cancelled) setProduct(data);
       } catch (err) {
-        if (!cancelled) setError(err.message || "Erro ao carregar produto");
+        if (!cancelled) setError(err.message || "Error loading product");
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -40,10 +43,14 @@ export default function Product() {
     };
   }, [id, product]);
 
+    const goToPurchase = (product) => {
+    navigate(`/product/purchase/${product.id}`, { state: { product } });
+  };
+
   if (loading)
     return (
       <div className="pd-container">
-        <p>Carregando produto...</p>
+        <p>Loading product...</p>
       </div>
     );
   if (error)
@@ -55,7 +62,7 @@ export default function Product() {
   if (!product)
     return (
       <div className="pd-container">
-        <p>Produto não encontrado.</p>
+        <p>No product found.</p>
       </div>
     );
 
@@ -63,7 +70,7 @@ export default function Product() {
     <main className="pd-container">
       <div className="pd-back-wrap">
         <Link to="/" className="pd-back">
-          ← Voltar
+          ← Back
         </Link>
       </div>
 
@@ -94,9 +101,9 @@ export default function Product() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="pd-btn pd-btn-primary"
-                //onClick={}
+                onClick={() => goToPurchase(product)}
               >
-                Comprar agora
+                Buy it now
               </a>
 
               <button
@@ -104,7 +111,7 @@ export default function Product() {
                 className="pd-btn pd-btn-outline"
                 //onClick={}
               >
-                Adicionar ao carrinho
+                Add to shopping cart
               </button>
             </div>
           </div>
