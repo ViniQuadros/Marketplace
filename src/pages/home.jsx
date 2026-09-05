@@ -1,9 +1,42 @@
 import { useAuth } from "../context/authContext";
 import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+import ProductCarousel from "../components/productsCarousel";
 
 export default function Home() {
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
+
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const abortController = new AbortController();
+
+    async function fetchProducts() {
+      try {
+        const baseUrl = import.meta.env.VITE_URL;
+        const response = await fetch(`${baseUrl}/api/products/home-products`, {
+          signal: abortController.signal,
+        });
+
+        if (!response.ok)
+          throw new Error("Faield to fetch products");
+
+        const data = await response.json();
+        setProducts(data);
+      } catch (err) {
+        if (err.name !== "AbortError") setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchProducts();
+    return () => abortController.abort();
+  }, []);
 
   async function handleLogout() {
     try {
@@ -20,7 +53,10 @@ export default function Home() {
 
       {currentUser ? (
         <div>
-          <p>Welcome back, <strong>{currentUser.displayName || currentUser.email}</strong>!</p>
+          <p>
+            Welcome back,{" "}
+            <strong>{currentUser.displayName || currentUser.email}</strong>!
+          </p>
         </div>
       ) : (
         <div>
@@ -30,6 +66,14 @@ export default function Home() {
           </p>
         </div>
       )}
+
+      <section style={{ marginTop: "40px" }}>
+        <h2>For you</h2>
+
+        {/* O componente encapsula toda a complexidade visual */}
+
+        <ProductCarousel products={products} loading={loading} error={error} />
+      </section>
     </div>
   );
 }

@@ -9,8 +9,6 @@ lerna-debug.log*
 
 firebase-adminsdk.json
 .env
-.env
-firebase-adminsdk.json
 node_modules
 dist
 dist-ssr
